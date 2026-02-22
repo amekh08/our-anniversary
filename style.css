@@ -1,0 +1,433 @@
+/* ============================================
+   Romantic Anniversary Site - Global Styles
+   ============================================ */
+
+:root {
+  --pink-light: #ffd6e0;
+  --pink: #ffb3c6;
+  --pink-deep: #ff85a2;
+  --pink-soft: #ffe4ec;
+  --white: #ffffff;
+  --shadow-soft: 0 8px 32px rgba(255, 105, 135, 0.2);
+  --shadow-hover: 0 12px 40px rgba(255, 105, 135, 0.3);
+  --radius: 24px;
+  --font: 'Nunito', 'Comic Sans MS', cursive, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  color: #5c3d4a;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   Backgrounds
+   ============================================ */
+
+.login-page,
+.love-page {
+  min-height: 100vh;
+  padding: 24px;
+  position: relative;
+  background: linear-gradient(135deg, #ffe4ec 0%, #ffd6e0 30%, #ffb3c6 60%, #ff9ebb 100%);
+  background-attachment: fixed;
+  transition: opacity 0.4s ease;
+}
+
+.login-page,
+.love-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.fade-out {
+  opacity: 0;
+}
+
+/* ============================================
+   Floating Hearts (keyframes)
+   ============================================ */
+
+.hearts-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  font-size: clamp(18px, 4vw, 28px);
+  opacity: 0.4;
+  animation: float-heart 12s ease-in-out infinite;
+}
+
+.heart:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 25%; top: 60%; animation-delay: -2s; }
+.heart:nth-child(3) { left: 45%; top: 15%; animation-delay: -4s; }
+.heart:nth-child(4) { left: 60%; top: 70%; animation-delay: -1s; }
+.heart:nth-child(5) { left: 80%; top: 30%; animation-delay: -3s; }
+.heart:nth-child(6) { left: 15%; top: 75%; animation-delay: -5s; }
+.heart:nth-child(7) { left: 70%; top: 10%; animation-delay: -2.5s; }
+.heart:nth-child(8) { left: 35%; top: 85%; animation-delay: -1.5s; }
+.heart:nth-child(9) { left: 90%; top: 55%; animation-delay: -4.5s; }
+.heart:nth-child(10) { left: 5%; top: 45%; animation-delay: -3.5s; }
+
+@keyframes float-heart {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translate(15px, -20px) scale(1.1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-10px, 10px) scale(0.95);
+    opacity: 0.35;
+  }
+  75% {
+    transform: translate(20px, 15px) scale(1.05);
+    opacity: 0.5;
+  }
+}
+
+/* ============================================
+   Cards
+   ============================================ */
+
+.card {
+  position: relative;
+  z-index: 1;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(24px, 5vw, 40px);
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.card-login {
+  animation: card-fade-in 0.6s ease;
+}
+
+.card-love {
+  max-width: 520px;
+  animation: card-fade-in 0.6s ease;
+}
+
+@keyframes card-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Login Page
+   ============================================ */
+
+.hello-kitty-img {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto 16px;
+  object-fit: contain;
+  transform: rotate(180deg);
+}
+
+.card-title {
+  font-size: clamp(1.35rem, 4vw, 1.6rem);
+  font-weight: 700;
+  color: #5c3d4a;
+  margin: 0 0 8px;
+}
+
+.card-subtitle {
+  font-size: 0.95rem;
+  color: #8b6b7a;
+  margin: 0 0 24px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.password-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.input-password {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 18px;
+  font-family: var(--font);
+  font-size: 1rem;
+  border: 2px solid var(--pink-light);
+  border-radius: 16px;
+  background: var(--pink-soft);
+  color: #5c3d4a;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hello Kitty view / hide password toggle */
+.btn-toggle-password {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 2px solid var(--pink-light);
+  border-radius: 14px;
+  background: var(--pink-soft);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.btn-toggle-password:hover {
+  border-color: var(--pink-deep);
+  box-shadow: 0 0 0 3px rgba(255, 133, 162, 0.2);
+  transform: scale(1.05);
+}
+
+.btn-toggle-password .toggle-hello-kitty {
+  width: 36px;
+  height: 43px;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+  transform: rotate(180deg);
+}
+
+.btn-toggle-password.is-visible .toggle-hello-kitty {
+  filter: brightness(1.05);
+}
+
+.input-password::placeholder {
+  color: #b8959e;
+}
+
+.input-password:focus {
+  outline: none;
+  border-color: var(--pink-deep);
+  box-shadow: 0 0 0 4px rgba(255, 133, 162, 0.2);
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+
+.btn {
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-unlock {
+  background: linear-gradient(135deg, var(--pink) 0%, var(--pink-deep) 100%);
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(255, 133, 162, 0.4);
+}
+
+.btn-unlock:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(255, 133, 162, 0.5);
+}
+
+.btn-unlock:active {
+  transform: translateY(0);
+}
+
+.btn-forever {
+  background: linear-gradient(135deg, var(--pink) 0%, var(--pink-deep) 100%);
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(255, 133, 162, 0.4);
+  margin-top: 8px;
+}
+
+.btn-forever:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(255, 133, 162, 0.5);
+}
+
+.btn-close-modal {
+  background: var(--pink-deep);
+  color: var(--white);
+  margin-top: 16px;
+}
+
+.btn-close-modal:hover {
+  background: #e66b8a;
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   Love Page
+   ============================================ */
+
+.love-heading {
+  font-size: clamp(1.4rem, 4vw, 1.75rem);
+  font-weight: 700;
+  color: #5c3d4a;
+  margin: 0 0 24px;
+  animation: glow-heading 3s ease-in-out infinite;
+}
+
+@keyframes glow-heading {
+  0%, 100% { text-shadow: 0 0 20px rgba(255, 182, 193, 0.6); }
+  50% { text-shadow: 0 0 30px rgba(255, 182, 193, 0.9); }
+}
+
+.letter-content {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.letter-paragraph {
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  line-height: 1.7;
+  color: #5c3d4a;
+  margin: 0 0 20px;
+}
+
+.letter-paragraph:last-of-type {
+  margin-bottom: 0;
+}
+
+.fade-in-p {
+  opacity: 0;
+  animation: fade-in-text 0.8s ease forwards;
+}
+
+.letter-content .fade-in-p:nth-of-type(2) { animation-delay: 2.2s; }
+.letter-content .fade-in-p:nth-of-type(3) { animation-delay: 3.4s; }
+
+@keyframes fade-in-text {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Typewriter cursor */
+.typewriter::after {
+  content: '|';
+  animation: blink 0.8s step-end infinite;
+  color: var(--pink-deep);
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ============================================
+   Modal
+   ============================================ */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(92, 61, 74, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.modal-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-hover);
+  animation: modal-pop 0.35s ease;
+}
+
+@keyframes modal-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-message {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #5c3d4a;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 480px) {
+  .card {
+    padding: 20px;
+  }
+
+  .card-title,
+  .love-heading {
+    font-size: 1.25rem;
+  }
+
+  .letter-paragraph {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    padding: 12px 20px;
+  }
+}

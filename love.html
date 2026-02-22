@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy First Anniversary 💕</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="love-page">
+  <div class="hearts-bg" aria-hidden="true">
+    <span class="heart">❤</span>
+    <span class="heart">💕</span>
+    <span class="heart">💗</span>
+    <span class="heart">❤</span>
+    <span class="heart">💕</span>
+    <span class="heart">💗</span>
+    <span class="heart">❤</span>
+    <span class="heart">💕</span>
+    <span class="heart">💗</span>
+    <span class="heart">❤</span>
+  </div>
+
+  <main class="card card-love">
+    <h1 class="love-heading">Happy First Anniversary My Love 🎀</h1>
+    <div class="letter-content">
+      <p class="letter-paragraph typewriter" id="typewriter-paragraph">
+        One year ago, you said yes to us—and every day since has felt like a gift. You make ordinary moments feel magical and hard days feel bearable just by being you.
+      </p>
+      <p class="letter-paragraph fade-in-p">
+        I fall in love with you a little more each time you laugh, each time you care for someone, and each time you choose us. Thank you for your patience, your kindness, and for seeing the best in me even when I don’t.
+      </p>
+      <p class="letter-paragraph fade-in-p">
+        This is only our first chapter. I can’t wait for all the anniversaries, adventures, and quiet nights we’ll share. You are my home, my peace, and my favorite person. I love you, today and always.
+      </p>
+    </div>
+    <button type="button" class="btn btn-forever" id="btn-forever">
+      I Love You Forever 💖
+    </button>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal-overlay" aria-hidden="true">
+    <div class="modal">
+      <p class="modal-message">Distance is temporary. Us is forever. 💕</p>
+      <button type="button" class="btn btn-close-modal" id="btn-close-modal">Close</button>
+    </div>
+  </div>
+
+  <!-- Optional: background music (muted by default, user can unmute) -->
+  <audio id="bg-music" loop preload="auto" muted>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+  <script>
+    // Love page: typewriter, modal, optional music
+    (function () {
+      var typewriterEl = document.getElementById('typewriter-paragraph');
+      var btnForever = document.getElementById('btn-forever');
+      var modal = document.getElementById('modal-overlay');
+      var btnCloseModal = document.getElementById('btn-close-modal');
+      var bgMusic = document.getElementById('bg-music');
+
+      if (typeof window.runTypewriter === 'function' && typewriterEl) {
+        window.runTypewriter(typewriterEl);
+      }
+
+      if (btnForever && modal) {
+        btnForever.addEventListener('click', function () {
+          modal.classList.add('modal-visible');
+          modal.setAttribute('aria-hidden', 'false');
+        });
+      }
+
+      if (btnCloseModal && modal) {
+        btnCloseModal.addEventListener('click', function () {
+          modal.classList.remove('modal-visible');
+          modal.setAttribute('aria-hidden', 'true');
+        });
+      }
+
+      if (modal) {
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) {
+            modal.classList.remove('modal-visible');
+            modal.setAttribute('aria-hidden', 'true');
+          }
+        });
+      }
+
+      // Optional: low-volume autoplay (muted first; user can unmute)
+      if (bgMusic) {
+        bgMusic.volume = 0.2;
+        bgMusic.play().catch(function () {});
+      }
+    })();
+  </script>
+</body>
+</html>

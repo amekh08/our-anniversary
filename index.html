@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Special Date 🎀</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+  <div class="hearts-bg" aria-hidden="true">
+    <span class="heart">❤</span>
+    <span class="heart">💕</span>
+    <span class="heart">💗</span>
+    <span class="heart">❤</span>
+    <span class="heart">💕</span>
+    <span class="heart">💗</span>
+    <span class="heart">❤</span>
+    <span class="heart">💕</span>
+    <span class="heart">💗</span>
+    <span class="heart">❤</span>
+  </div>
+
+  <main class="card card-login">
+    <img src="Hello-Kitty-PNG-Images-HD.png" alt="Hello Kitty" class="hello-kitty-img" width="100" height="120">
+    <h1 class="card-title">Happy Anniversary Januu🎀</h1>
+    <p class="card-subtitle">enter our special date</p>
+    <form id="login-form" class="login-form" novalidate>
+      <div class="password-wrap">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="DDMMYYYY"
+          maxlength="8"
+          autocomplete="off"
+          class="input-password"
+        >
+        <button type="button" class="btn-toggle-password" id="toggle-password" aria-label="Show password" title="Show password">
+          <img src="Hello-Kitty-Face-PNG-File.png" alt="" class="toggle-hello-kitty" width="36" height="43">
+        </button>
+      </div>
+      <button type="submit" class="btn btn-unlock" id="btn-unlock">
+        Unlock My Heart 💕
+      </button>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // Login page: form submit and password check
+    (function () {
+      var form = document.getElementById('login-form');
+      var passwordInput = document.getElementById('password');
+      var correctPassword = '2622025';
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var value = (passwordInput.value || '').trim();
+
+        if (value === correctPassword) {
+          document.body.classList.add('fade-out');
+          setTimeout(function () {
+            window.location.href = 'story.html';
+          }, 400);
+        } else {
+          window.showCuteAlert('Wrong date silly 😝 Try again my love 💕');
+        }
+      });
+
+      // View / Hide password with Hello Kitty toggle
+      var toggleBtn = document.getElementById('toggle-password');
+      if (toggleBtn && passwordInput) {
+        toggleBtn.addEventListener('click', function () {
+          var isPassword = passwordInput.type === 'password';
+          passwordInput.type = isPassword ? 'text' : 'password';
+          toggleBtn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+          toggleBtn.setAttribute('title', isPassword ? 'Hide password' : 'Show password');
+          toggleBtn.classList.toggle('is-visible', isPassword);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
